@@ -1,20 +1,13 @@
-
 pipeline {
-  agent any
-
-   stages {
-
-	  stage('Checking environment') {
-         steps {
-            sh 'printenv'
-         }
-      }
-      environment {
+    agent any
+	
+	environment {
 		IMAGE_NAME="mywebsite"
 		REPO_NAME="${DOCKER_HUB_NAME}/${IMAGE_NAME}"
 		USER=credentials('DOCKERHUB_USER')
 		PASS=credentials('DOCKERHUB_PASSWORD')	
 	}   
+  
 
 	  stage('Prepare sources of the website') {
          steps {
